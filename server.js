@@ -38,13 +38,13 @@ mongoose.connect(MONGODB_URI);
 // a GET route for scraping The New York Times website
 app.get("/scrape", function (req, res) {
     // grab the body of the html with axios
-    axios.get("https://www.nytimes.com/section/politics").then(function (response) {
+    axios.get("https://www.nytimes.com/section/travel").then(function (response) {
         // load that into cherrio and save it to $ for a shorthand selector
         let $ = cheerio.load(response.data);
 
-        $(".css-ye6x8s").each(function (i, elem) {
+        $(".css-ye6x8s").each(function (i, element) {
 
-            var result = {};
+            let result = {};
 
             // Add the text and href of every link, and save them as properties of the result object
             result.title = $(this)
@@ -64,11 +64,11 @@ app.get("/scrape", function (req, res) {
 
             db.Article.create(result)
                 .then(function (dbArticle) {
-                    // View the added result in the console
+    
                     console.log(dbArticle);
                 })
                 .catch(function (err) {
-                    // If an error occurred, log it
+                    // log any errors
                     console.log(err);
                 });
             });
@@ -76,6 +76,7 @@ app.get("/scrape", function (req, res) {
     });
 });
 
+// route for getting all Articles from the database
 app.get("/articles", function(req, res) {
     db.Article.find({})
     .sort({articleCreated:-1})
@@ -86,6 +87,17 @@ app.get("/articles", function(req, res) {
         res.json(err);
     });
 });
+
+// route for getting a specific Article by id, populate it with its comment
+app.get("/articles/:id", function(req, res) {
+    db.Article.findOne({ _id: req.params.id })
+    .populate("comment")
+    .then(function(err) {
+        res.json(err);
+    });
+});
+
+
 
 // route serve the articles and render the index
 // findarticles and render the index  
