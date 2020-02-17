@@ -97,10 +97,52 @@ app.get("/articles/:id", function(req, res) {
     });
 });
 
+// route for saving/updating a specific Article's comment
+app.post("/articles/:id", function(req, res) {
+    db.Comment.create(req.body)
+    .then(function(dbComment) {
+        return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true });
+    })
+    .then(function(dbArticle) {
+        res.json(dbArticle);
+    })
+    .catch(function(err) {
+        res.json(err);
+    });
+});
 
+// route for saving/updating specific article to be saved
+app.put("/saved/:id", function(req, res) {
+    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { isSaved: true }})
+    .then(function(dbArticle) {
+        res.json(dbArticle);
+    })
+    .catch(function(err) {
+        res.json(err);
+    });
+});
 
-// route serve the articles and render the index
-// findarticles and render the index  
+// route for getting saved article
+app.get("/saved", function(req,res) {
+    db.Article.find({ isSaved: true })
+    .then(function(dbArticle) {
+        res.json(dbArticle);
+    })
+    .catch(function(err) {
+        res.json(err);
+    });
+});
+
+// route for deleting/updating a saved article
+app.put("/delete/:id", function(req, res) {
+    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { isSaved: false }})
+    .then(function(dbArticle) {
+        res.json(dbArticle);
+    })
+    .catch(function(err) {
+        res.json(err);
+    });
+});
 
 
 // start the server
