@@ -38,7 +38,7 @@ mongoose.connect(MONGODB_URI);
 // a GET route for scraping The New York Times website
 app.get("/scrape", function (req, res) {
     // grab the body of the html with axios
-    axios.get("https://www.nytimes.com/section/travel").then(function (response) {
+    axios.get("https://www.nytimes.com/section/magazine").then(function (response) {
         // load that into cherrio and save it to $ for a shorthand selector
         let $ = cheerio.load(response.data);
 
@@ -124,7 +124,7 @@ app.put("/saved/:id", function(req, res) {
 
 // route for getting saved article
 app.get("/saved", function(req,res) {
-    db.Article.find({ isSaved: true })
+    db.Article.find({ saved: true })
     .then(function(dbArticle) {
         res.json(dbArticle);
     })
