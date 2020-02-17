@@ -31,9 +31,9 @@ $(document).ready(function() {
 
     // on click function to save an article
     $(document).on("click", "#btn-save", function() {
-        $(this).addClass=("disabled");
+        // $(this).addClass("disabled");
         let thisId = $(this).attr("data-id");
-        console.log(thisId);
+        // console.log(thisId);
 
         $.ajax({
             method: "PUT",

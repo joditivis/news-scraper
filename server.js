@@ -113,7 +113,7 @@ app.post("/articles/:id", function(req, res) {
 
 // route for saving/updating specific article to be saved
 app.put("/saved/:id", function(req, res) {
-    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { isSaved: true }})
+    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { saved: true }})
     .then(function(dbArticle) {
         res.json(dbArticle);
     })
