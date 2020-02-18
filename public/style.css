@@ -1,5 +1,5 @@
 body {
-    background: url(images/nyt.jpeg);
+    background: url(images/newyork.jpeg);
     background-size: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -9,8 +9,8 @@ body {
 }
 
 .navbar {
-    background-color: rgb(255, 255, 255);
-    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.842);
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
     border-radius: 4px;
 }
@@ -20,7 +20,7 @@ body {
 }
 
 .jumbotron {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.842);
 }
 
 h1 {
@@ -28,7 +28,7 @@ h1 {
 }
 
 .card {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.842);
     margin-bottom: .5rem;
 }
 
