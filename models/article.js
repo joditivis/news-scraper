@@ -40,7 +40,7 @@ const ArticleSchema = new Schema({
 });
 
 // creates the model from the above schema, using mongoose's model method
-const Article = mongoose.model("Article", ArticleSchema);
+const Article = mongoose.model("article", ArticleSchema);
 
 // export the Article model
 module.exports = Article;
