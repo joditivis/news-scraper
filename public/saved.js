@@ -3,8 +3,8 @@ $(document).ready(function () {
     // grab articles as a JSON
     $.getJSON("/saved", function (data) {
 
-        if (articles === 0) {
-            $("#articles").append("<h1>No Saved Articles</h1>");
+        if (articles === NaN) {
+            $("#articles").append("<h1>No saved articles</h1>");
 
         } else {
 
@@ -18,7 +18,7 @@ $(document).ready(function () {
                     + data[i].title + "</h5></a><hr><p class='card-text'>"
                     + data[i].summary + "</p><br />" + "<img class='card-img' src='"
                     + data[i].image + "'><hr>" + "<button data-id='" 
-                    + data[i]._id + "' class='btn-note btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#commentModal'>Comment</button><button id='btn-delete' data-id='" 
+                    + data[i]._id + "' class='btn-comment btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#commentModal'>Comment</button><button id='btn-delete' data-id='" 
                     + data[i]._id + "' class='btn btn-outline-danger btn-sm'>Delete</button></div></div></div>");
             };
         };
@@ -37,11 +37,25 @@ $(document).ready(function () {
         });
     });
 
+    // clear articles if user wants to clear saved articles
     $(document).on("click", ".btn-clear", function() {
-
         $("#articles").empty();
-
-        $("#articles").append("<h1 class='cleared text-center'>Articles Cleared</h1>")
+        $("#articles").append("<h1 class='cleared text-center'>Articles cleared. Navigate to home page to find more!</h1>")
       });
+
+    //   $(document).on("click", ".save-comment", function() {
+
+    //     // $("comment-box").val().trim();
+    //     let thisId = $(this).attr("data-id");
+
+    //     $.ajax({
+    //         method: "PUT",
+    //         url: "/comment/" + thisId
+    //     })
+    //     .then(function() {
+    //         $(".users-comments")
+    //             .append("<ul class='list-group comment-modal-list'><li class='list-group-item comment-item'>" + url + "</li></ul>")
+    //     });
+    //   });
 
 });

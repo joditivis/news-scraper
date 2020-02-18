@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     // on click function to fetch new articles
     $(document).on("click", ".btn-fetch", function() {
-        
+        // access the scrape method if user wants to display new articles
         $.ajax({
             method: "GET",
             url: "/scrape"
@@ -31,10 +31,9 @@ $(document).ready(function() {
 
     // on click function to save an article
     $(document).on("click", "#btn-save", function() {
-        // $(this).addClass("disabled");
         let thisId = $(this).attr("data-id");
-        // console.log(thisId);
 
+        // ajax put method to put selected article by id onto the saved page
         $.ajax({
             method: "PUT",
             url: "/saved/" + thisId,
@@ -44,11 +43,12 @@ $(document).ready(function() {
         });
     });
 
+    // clears all articles if user wants to empty
     $(document).on("click", ".btn-clear", function() {
 
         $("#articles").empty();
 
-        $("#articles").append("<h1 class='cleared text-center'>Articles Cleared</h1>")
+        $("#articles").append("<h3 class='cleared text-center'>Articles cleared. Fetch new articles if you want to see more.</h3>")
       });
 
 });

@@ -38,7 +38,7 @@ mongoose.connect(MONGODB_URI);
 // a GET route for scraping The New York Times website
 app.get("/scrape", function (req, res) {
     // grab the body of the html with axios
-    axios.get("https://www.nytimes.com/section/magazine").then(function (response) {
+    axios.get("https://www.nytimes.com/section/t-magazine/design").then(function (response) {
         // load that into cherrio and save it to $ for a shorthand selector
         let $ = cheerio.load(response.data);
 
@@ -59,90 +59,90 @@ app.get("/scrape", function (req, res) {
             result.image = $(this)
                 .find("img")
                 .attr("src");
-         
+
             console.log(result);
 
             db.Article.create(result)
                 .then(function (dbArticle) {
-    
+
                     console.log(dbArticle);
                 })
                 .catch(function (err) {
                     // log any errors
                     console.log(err);
                 });
-            });
+        });
         res.send("Scrape Complete");
     });
 });
 
 // route for getting all Articles from the database
-app.get("/articles", function(req, res) {
+app.get("/articles", function (req, res) {
     db.Article.find({})
-    .sort({articleCreated:-1})
-    .then(function(dbArticle) {
-        res.json(dbArticle);
-    })
-    .catch(function(err) {
-        res.json(err);
-    });
-});
-
-// route for getting a specific Article by id, populate it with its comment
-app.get("/articles/:id", function(req, res) {
-    db.Article.findOne({ _id: req.params.id })
-    .populate("comment")
-    .then(function(err) {
-        res.json(err);
-    });
-});
-
-// route for saving/updating a specific Article's comment
-app.post("/articles/:id", function(req, res) {
-    db.Comment.create(req.body)
-    .then(function(dbComment) {
-        return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true });
-    })
-    .then(function(dbArticle) {
-        res.json(dbArticle);
-    })
-    .catch(function(err) {
-        res.json(err);
-    });
+        .sort({ articleCreated: -1 })
+        .then(function (dbArticle) {
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
 
 // route for saving/updating specific article to be saved
-app.put("/saved/:id", function(req, res) {
-    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { saved: true }})
-    .then(function(dbArticle) {
-        res.json(dbArticle);
-    })
-    .catch(function(err) {
-        res.json(err);
-    });
+app.put("/saved/:id", function (req, res) {
+    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { saved: true } })
+        .then(function (dbArticle) {
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
 
 // route for getting saved article
-app.get("/saved", function(req,res) {
+app.get("/saved", function (req, res) {
     db.Article.find({ saved: true })
-    .then(function(dbArticle) {
-        res.json(dbArticle);
-    })
-    .catch(function(err) {
-        res.json(err);
-    });
+        .then(function (dbArticle) {
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
 
 // route for deleting/updating a saved article
-app.put("/delete/:id", function(req, res) {
-    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { saved: false }})
-    .then(function(dbArticle) {
-        res.json(dbArticle);
-    })
-    .catch(function(err) {
-        res.json(err);
-    });
+app.put("/delete/:id", function (req, res) {
+    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { saved: false } })
+        .then(function (dbArticle) {
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 });
+
+// route for saving/updating a specific Article's comment
+// app.post("/comment/:id", function (req, res) {
+//     db.Comment.create(req.body)
+//         .then(function (dbComment) {
+//             return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true });
+//         })
+//         .then(function (dbArticle) {
+//             res.json(dbArticle);
+//         })
+//         .catch(function (err) {
+//             res.json(err);
+//         });
+// });
+
+// // route for getting a specific Article by id, populate it with its comment
+// app.get("/comment/:id", function (req, res) {
+//     db.Article.findOne({ _id: req.params.id })
+//         .populate("comment")
+//         .then(function (err) {
+//             res.json(err);
+//         });
+// });
 
 
 // start the server

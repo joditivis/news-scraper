@@ -37,6 +37,10 @@ h1 {
     height: 190px;
 }
 
+.cleared {
+    background-color: rgb(255, 255, 255);
+}
+
 #btn-delete {
     margin-left: 10px;
 }
