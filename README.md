@@ -1,6 +1,6 @@
 # New York Times Style Magazine
 
-Link to App:
+Link to App: **https://news-scraper-jt.herokuapp.com/**
 
 ---
 
