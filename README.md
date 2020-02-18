@@ -50,3 +50,25 @@ npm install axios
 ---
 
 ### Features:
+#### Home Page:
+![Image](public/images/gif1.gif)
+
+---
+
+#### Save Article:
+![Image](public/images/gif2.gif)
+
+---
+
+#### View Saved Article + Leave Comments:
+![Image](public/images/gif3.gif)
+
+---
+
+#### Delete Saved Article:
+![Image](public/images/gif5.gif)
+
+---
+
+#### Clear Articles:
+![Image](public/images/gif4.gif)
