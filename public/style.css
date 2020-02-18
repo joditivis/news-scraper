@@ -36,3 +36,11 @@ h1 {
     width: 250px;
     height: 190px;
 }
+
+#btn-delete {
+    margin-left: 10px;
+}
+
+textarea {
+    width: 27.3rem;
+}
