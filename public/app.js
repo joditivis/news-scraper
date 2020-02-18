@@ -11,7 +11,7 @@ $(document).ready(function() {
             .prepend("<div class='col-sm-4'><div class='card'><div class='card-body'><a class='title-link' href='" 
             + data[i].link +"'><h5>" 
             + data[i].title + "</h5></a><hr><p class='card-text'>" 
-            + data[i].summary + "</p><br />" + "<img src='" 
+            + data[i].summary + "</p><br />" + "<img class='card-img' src='" 
             + data[i].image + "'><hr>" + "<button id='btn-save' data-id='" 
             + data[i]._id + "' class='btn btn-outline-primary btn-sm'>Save Article</button></div></div></div>");
         };

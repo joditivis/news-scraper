@@ -135,7 +135,7 @@ app.get("/saved", function(req,res) {
 
 // route for deleting/updating a saved article
 app.put("/delete/:id", function(req, res) {
-    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { isSaved: false }})
+    db.Article.findByIdAndUpdate({ _id: req.params.id }, { $set: { saved: false }})
     .then(function(dbArticle) {
         res.json(dbArticle);
     })

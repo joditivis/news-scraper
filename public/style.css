@@ -1,0 +1,38 @@
+body {
+    background: url(images/nyt.jpeg);
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'PT Serif Caption', serif;
+}
+
+.navbar {
+    background-color: rgb(255, 255, 255);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+}
+
+.navbar-brand, .nav-link, .title-link {
+    color: rgb(0, 0, 0);
+}
+
+.jumbotron {
+    background-color: rgb(255, 255, 255);
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.card {
+    background-color: rgb(255, 255, 255);
+    margin-bottom: .5rem;
+}
+
+.card-img {
+    width: 250px;
+    height: 190px;
+}

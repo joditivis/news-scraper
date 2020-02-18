@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif+Caption&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <title>New York Times Magazine</title>
@@ -20,29 +22,30 @@
     <div class="container">
 
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html">Mongo Scraper</a>
+            <!-- <a class="navbar-brand" href="index.html">Mongo Scraper</a> -->
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link home-btn" href="index.html">Home</a>
+                        <a class="nav-link home-btn" href="index.html"><button class="btn btn-outline-primary btn-sm">Home</button></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link saved-page-btn" href="saved.html">Saved Articles</a>
+                        <a class="nav-link saved-page-btn" href="saved.html"><button class="btn btn-outline-primary btn-sm">Saved Articles</button></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-fetch" href="#">Fetch New Articles</a>
+                        <a class="nav-link btn-fetch" href="#"><button class="btn btn-outline-primary btn-sm">Fetch New Articles</button></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-clear" href="#">Clear Articles</a>
+                        <a class="nav-link btn-clear" href="#"><button class="btn btn-outline-danger btn-sm">Clear Articles</button></a>
                     </li>
                 </ul>
             </div>
         </nav>
+
         <div class="jumbotron text-center">
             <h1>New York Times Magazine</h1>
         </div>
-
+        
         <div class="row" id="articles"></div>
     </div>
 
