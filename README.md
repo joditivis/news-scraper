@@ -28,12 +28,24 @@ Mongo Scraper is a web application that utilizes Mongoose and Cheerio to scrape 
 --- 
 
 ### Installations:
+```
 npm init
+```
+```
 npm install
+```
+```
 npm install express
+```
+```
 npm install mongoose
+```
+```
 npm install cheerio
+```
+```
 npm install axios
+```
 
 ---
 
